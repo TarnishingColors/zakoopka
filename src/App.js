@@ -11,8 +11,10 @@ function App() {
         <Route exact path="/auth">
           <Auth />
         </Route>
+        <Route exact path="/">
+          <Footer />
+        </Route>
       </Switch>
-      <Footer />
     </Router>
   );
 }
