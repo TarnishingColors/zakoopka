@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import useStyles from './styles';
 import LockOutlinedIcon from "@material-ui/icons/LockOutlined";
 import Input from "./Input";
-//import { signin, signup } from '../../actions/auth';
+import { signin, signup } from '../../actions/auth';
 
 const initialState = {
   firstName: '',
@@ -28,11 +28,11 @@ const Auth = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    // if (isSignup) {
-    //   dispatch(signup(formData, history));
-    // } else {
-    //   dispatch(signin(formData, history));
-    // }
+    if (isSignup) {
+      dispatch(signup(formData, history));
+    } else {
+      dispatch(signin(formData, history));
+    }
   }
 
   const handleChange = (e) => {
@@ -57,7 +57,7 @@ const Auth = () => {
         <Typography variant="h6">
           {isSignup ? "Регистрация" : "Вход"}
         </Typography>
-        <form className={classes.form} onSubmit={{handleSubmit}}>
+        <form className={classes.form} onSubmit={handleSubmit}>
           <Grid container spacing={2}>
             {
               isSignup && (
